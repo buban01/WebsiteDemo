@@ -4,9 +4,7 @@ phases:
   install:
     runtime-versions:
       nodejs: 10
-    commands:
-      - apt-get install unzip
-
+    
   build:
     commands:
       - echo Build started on `date`

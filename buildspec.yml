@@ -15,16 +15,18 @@ phases:
       
   pre_build:
      commands:
-     - wget http://www-eu.apache.org/dist/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz
-     - tar xzf apache-maven-3.5.4-bin.tar.gz
-     
+    
+     - wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.3.0.1492-linux.zip
+     - pwd
      - unzip ./sonar-scanner-cli-3.3.0.1492-linux.zip
-     - export PATH=$PATH:/sonar-scanner-3.3.0.1492-linux/bin/
+     - ls
+     - mv sonar-scanner-3.3.0.1492-linux/opt/sonar-scanner
+     - chmod -R 775 /opt/sonar-scanner
+     
   build:
     commands:
       - echo Build started on `date`
-      - mvn install
-      - mvn sonar:sonar -Dsonar.login=$LOGIN -Dsonar.host.url=$HOST -Dsonar.projectKey=$Project
+      - result = $(/opt/sonar-scanner/bin/sonar-scanner -Dsonar.sourceEncoding=UTF-8- Dsonar.login=$LOGIN -Dsonar.host.url=$HOST -Dsonar.projectKey=$Project)
       - zip hello.zip ./index.html ./aws.gif ./1.png ./back.jpg
    
 artifacts:

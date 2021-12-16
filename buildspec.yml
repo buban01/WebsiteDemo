@@ -25,7 +25,7 @@ phases:
     commands:
       - echo Build started on `date`
         
-      - mvn sonar:sonar -Dsonar.login=$LOGIN -Dsonar.host.url=$HOST 
+      - mvn sonar:sonar -Dsonar.login=$LOGIN -Dsonar.host.url=$HOST -Dsonar.projectKey=$Project
       - zip hello.zip ./index.html ./aws.gif ./1.png ./back.jpg
    
 artifacts:

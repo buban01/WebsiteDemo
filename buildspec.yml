@@ -25,6 +25,7 @@ phases:
     commands:
       - echo Build started on `date`
       - result = $(/opt/sonar-scanner/bin/sonar-scanner -Dsonar.sourceEncoding=UTF-8- Dsonar.login=$LOGIN -Dsonar.host.url=$HOST -Dsonar.projectKey=$Project)
+      - echo $result
       - zip hello.zip ./index.html ./aws.gif ./1.png ./back.jpg
    
 artifacts:

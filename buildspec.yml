@@ -4,7 +4,7 @@ env:
   secrets-manager:
     LOGIN: prod/sonar:sonartoken
     HOST: prod/sonar:HOST
-    Project: prod/sonar:Project
+    
  
 phases:
   install:
@@ -24,7 +24,7 @@ phases:
     commands:
       - echo Build started on `date`
         
-      - mvn sonar:sonar -Dsonar.login=$LOGIN -Dsonar.host.url=$HOST -Dsonar.projectKey=$Project
+      - mvn sonar:sonar -Dsonar.login=$LOGIN -Dsonar.host.url=$HOST 
       - zip hello.zip ./index.html ./aws.gif ./1.png ./back.jpg
    
 artifacts:
